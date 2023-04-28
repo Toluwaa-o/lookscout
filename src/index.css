@@ -179,12 +179,13 @@ main .account div, .personal div {
   padding-inline: 1em;
 }
 
-main .account input[type="text"], main .account input[type="password"], main .account input[type="email"], main .personal input[type="text"], main .personal input[type="password"], main .personal input[type="email"] {
+main .account input[type="text"], main .account input[type="password"], main .account input[type="email"], main .personal input[type="text"] {
   width: 100%;
   max-width: 390px;
   border: 1px solid var(--mainBorder);
   outline: none;
   padding: .7em;
+  border-radius: 7px;
   color: var(--textColor);
   background: var(--navBg);
 }
