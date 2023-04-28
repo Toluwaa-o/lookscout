@@ -230,6 +230,7 @@ main .account button, main .personal button, .billing button {
   padding: .7em 0;
   margin: auto;
   gap: .5em;
+  border-radius: 7px;
 }
 
 main .account button:disabled {
@@ -442,8 +443,9 @@ main .account button:disabled {
     height: fit-content;
     margin: 0;
     margin-left: auto;
-    width: 15%;
+    width: 20%;
     border-radius: 7px;
+    padding-inline: 1em;
   }
 
   main navbar {
