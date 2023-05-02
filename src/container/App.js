@@ -14,7 +14,7 @@ import Error from '../pages/error'
 const router = createBrowserRouter(
   createRoutesFromElements(
       <Route path='/' element={<Pages />} >
-        <Route index path='register' element={<Main />}>
+        <Route path='register' element={<Main />}>
           <Route index element={<Account />} />
           <Route path='personal' element={<Personal />} />
           <Route path='billing' element={<Billing />} />
