@@ -4,7 +4,6 @@ export default function pages() {
   return (
     <>
       <Outlet />
-      <Navigate to='register' replace={true} />
     </>
   )
 }
