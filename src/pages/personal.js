@@ -39,7 +39,7 @@ export default function Personal() {
         </button>
       </div>
     </form>
-    {valid && <Navigate to='/billing' />}
+    {valid && <Navigate to='/register/billing' />}
     </>
   )
 }

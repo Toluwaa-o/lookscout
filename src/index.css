@@ -88,7 +88,7 @@ header {
   padding: 1.5em 1em;
 }
 
-header svg {
+header svg, .admin svg {
   fill: var(--textColor);
 }
 
@@ -101,6 +101,41 @@ main {
   overflow: hidden;
   height: fit-content;
   background: var(--formBg);
+}
+
+.admin {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  background: var(--bodyBg);
+  border: 1px solid var(--mainBorder);
+}
+
+.admin h2 {
+  color: var(--textColor);
+  text-align: center;
+  font-size: 1.7em;
+}
+
+.admin > div {
+  display: flex;
+  gap: 1em;
+}
+
+.admin > div > a {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  border: 3px solid var(--mainBorder);
+  border-radius: 10px;
+  padding: 1em;
+  color: var(--textColor);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.3em;
+  text-decoration: none;
 }
 
 main nav {
@@ -160,26 +195,26 @@ main > nav > a > div > svg {
   fill: var(--navColor);
 }
 
-main .account, .personal {
+main .account, .personal, .admin, .edit {
   background: var(--formBg);
   padding-top: 1em;
 }
 
-main .account label, .personal label {
+main .account label, .personal label, .edit label {
   display: block;
   color: var(--textColor);
   font-weight: 500;
   padding-bottom: .5em;
 }
 
-main .account div, .personal div {
+main .account div, .personal div, .edit {
   position: relative;
   margin: auto;
   margin-bottom: 1em;
   padding-inline: 1em;
 }
 
-main .account input[type="text"], main .account input[type="password"], main .account input[type="email"], main .personal input[type="text"] {
+main .account input[type="text"], main .account input[type="password"], main .account input[type="email"], main .personal input[type="text"], .edit input {
   width: 100%;
   max-width: 390px;
   border: 1px solid var(--mainBorder);
@@ -188,6 +223,10 @@ main .account input[type="text"], main .account input[type="password"], main .ac
   border-radius: 7px;
   color: var(--textColor);
   background: var(--navBg);
+}
+
+.edit input {
+  margin-bottom: 1em;
 }
 
 main .account div > svg {
@@ -217,11 +256,36 @@ input.checkbox {
   height: 19px;
 }
 
+.error {
+  height: 40vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.error a {
+  color: var(--active);
+  text-decoration: none;
+}
+
+.users section {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.users a {
+  color: var(--active);
+  font-weight: 700;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
 .terms label {
   font-weight: 500;
 }
 
-main .account button, main .personal button, .billing button {
+main .account button, main .personal button, .billing button, .edit button {
   background: var(--active);
   border: 1px solid var(--active);
   color: white;
@@ -232,6 +296,7 @@ main .account button, main .personal button, .billing button {
   margin: auto;
   gap: .5em;
   border-radius: 7px;
+  text-transform: Capitalize;
 }
 
 main .account button:disabled {
@@ -310,6 +375,43 @@ main .account button:disabled {
   fill: var(--active);
 }
 
+.users {
+  padding: 1em;
+  height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+.users h2 {
+  font-size: 2em;
+  text-align: center;
+}
+
+.users h3 {
+  font-size: 1.7em;
+}
+
+.users > div {
+  height: fit-content;
+  width: 80%;
+  padding: 1em;
+  border: 1px solid var(--mainBorder);
+  border-radius: 5px;
+}
+
+.loading {
+  text-align: center;
+  color: var(--active);
+}
+
+.edit button:disabled {
+  background: gray;
+  border: 1px solid gray;
+}
+
 @media (min-width: 480px) {
   main nav > svg {
     display: block;
@@ -328,6 +430,10 @@ main .account button:disabled {
     width: 100%;
     overflow: hidden;
     /* padding: 1.5em; */
+  }
+
+  .edit {
+    padding: 2em 1em;
   }
 
   .personal {
@@ -431,7 +537,7 @@ main .account button:disabled {
     padding: 1.5em 2em;
   }
 
-  main .account input[type="text"], main .account input[type="password"], main .account input[type="email"], main .personal input[type="text"], main .personal input[type="password"], main .personal input[type="email"] {
+  main .account input[type="text"], main .account input[type="password"], main .account input[type="email"], main .personal input[type="text"], main .personal input[type="password"], main .personal input[type="email"], .edit input {
     width: 100%;
     margin: auto;
     max-width: 100%;
@@ -439,7 +545,11 @@ main .account button:disabled {
     box-sizing: border-box;
   }
 
-  main .account button, main .personal button, .billing button {
+  .edit input {
+    margin-bottom: 1.5em;
+  }
+
+  main .account button, main .personal button, .billing button, .edit button {
     width: fit-content;
     height: fit-content;
     margin: 0;
@@ -465,6 +575,10 @@ main .account button:disabled {
 
   .done p {
     width: 70%;
+  }
+
+  .controls > a {
+    height: 20vh;
   }
 } 
 

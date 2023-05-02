@@ -140,7 +140,7 @@ export default function Billing() {
       </button>
       </div>
     </form>
-    {valid && <Navigate to='/done' />}
+    {valid && <Navigate to='/register/done' />}
     </>
   )
 }

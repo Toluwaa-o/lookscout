@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Navigate } from 'react-router'
+import instance from '../components/axios/config'
 
 export default function Account() {
   const [ data, setData ] = useState({
@@ -8,8 +9,11 @@ export default function Account() {
     password: '',
     cpassword: '',
     accept: true,
-    valid: false
+    valid: false,
+    button: ''
   })
+
+  const [shouldSubmit, setShouldSubmit] = useState(false)
 
   const [ show, setShow ] = useState({
     msg1: null,
@@ -70,8 +74,30 @@ export default function Account() {
       return setShow(prev => ({...prev, msg1: 'Please make sure passwords match', msg4: true}))
     }
 
-    setData(prev => ({...prev, valid: true}))
+    setShouldSubmit(true)
   }
+
+  useEffect(() => {
+    instance.get('/info')
+    .then(res => setData(prev => ({...prev, button: res.data.info.button})))
+    .catch(err => console.log(err))
+  }, [])
+
+  useEffect(() => {
+    if(shouldSubmit){
+      const body = {name: data.name, email: data.email}
+      instance({
+        url: '/user', 
+        method: 'post',
+        data: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => setData(prev => ({...prev, valid: true})))
+      .catch(err => setShow(prev => ({...prev, msg1: err.message})))
+    }
+  }, [shouldSubmit])
 
   return (
     <>
@@ -112,13 +138,13 @@ export default function Account() {
 
       <div>
       <button type='submit' disabled={!data.accept}>
-        Next
+        {data.button}
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{fill: 'white'}}><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
       </button>
       </div>
       
     </form>
-    {data.valid && <Navigate to='/personal' />}
+    {data.valid && <Navigate to='/register/personal' />}
     </>
   )
 }
