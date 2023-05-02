@@ -1,10 +1,16 @@
-import { Outlet, Navigate } from "react-router"
+import { Outlet } from "react-router"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from 'react'
 
-export default function pages() {
+export default function Pages() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate('/register')
+  }, [])
+
   return (
     <>
       <Outlet />
-      <Navigate to='register' replace={true} />
     </>
   )
 }
